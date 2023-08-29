@@ -1,25 +1,58 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Palindrome.Models;
 
-namespace Palinrome.Tests
+[TestClass]
+public class PalindromeCheckerTests
 {
-  [TestClass]
-  public class PalindromeTests
-  {
-    
-    [TestMethod] 
-    public void WordConstructor_CreatesInstanceOfWord_Word()
-
+    [TestMethod]
+    public void IsPalindrome_EmptyString_ReturnsTrue()
     {
-      Word newWord = new Word();
-      //Assert.AreEqual(typeof(Word), newWord.getType());
+        // Arrange
+        string word = "";
+
+        // Act
+        bool isPalindrome = PalindromeChecker.IsPalindrome(word);
+
+        // Assert
+        Assert.IsTrue(isPalindrome);
     }
 
-    // [TestMethod]
-    // {
-    //   string[] theWord = {"theWord"};
-    //   char[] theWord = { "m", "o", "m"};
-    //   List<char> lettersList = new List<char> {};
-    // }
-  }
+    [TestMethod]
+    public void IsPalindrome_SingleCharacterString_ReturnsTrue()
+    {
+        // Arrange
+        string word = "a";
+
+        // Act
+        bool isPalindrome = PalindromeChecker.IsPalindrome(word);
+
+        // Assert
+        Assert.IsTrue(isPalindrome);
+    }
+
+    [TestMethod]
+    public void IsPalindrome_PalindromeString_ReturnsTrue()
+    {
+        // Arrange
+        string word = "racecar";
+
+        // Act
+        bool isPalindrome = PalindromeChecker.IsPalindrome(word);
+
+        // Assert
+        Assert.IsTrue(isPalindrome);
+    }
+
+    [TestMethod]
+    public void IsPalindrome_NonPalindromeString_ReturnsFalse()
+    {
+        // Arrange
+        string word = "hello";
+
+        // Act
+        bool isPalindrome = PalindromeChecker.IsPalindrome(word);
+
+        // Assert
+        Assert.IsFalse(isPalindrome);
+    }
 }
